@@ -1,22 +1,36 @@
+'''
+	A few notations to consider in this program:
+	The four suits: spades, hearts, diamonds and clubs are always going to be lowercase
+	The players are stored as objects. The player object contains the hand and the number of points.
+	 
+'''
 import random;
 
-Deck = range(52);
-random.shuffle(Deck);
+Deck = [];
 
 class Player:
-	clubs = []
+	points = 0;
+	clubs = [];
 	spades = [];
-	diamonds = []
-	hearts = []
-	def __init__(self, clubs, spades, diamonds, hearts):
-		self.clubs = clubs;
-		self.hearts = hearts;
-		self.spades = spades;
-		self.hearts = hearts;
-	
+	diamonds = [];
+	hearts = [];
+	def __init__(self, hand):
+		self.points = 0;
+		self.setHand(hand);
+		
+	def setHand(hand):
+		self.clubs = hand['clubs'];
+		self.hearts = hand['hearts'];
+		self.spades = hand['spades'];
+		self.hearts = hand['hearts'];
+			
 	def playCard():
 		#implementation goes here
 	def pass():
-				 
+		#more implementation
+
+def Deal():
+	
+					 
 	
 print Deck;

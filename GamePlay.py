@@ -30,7 +30,10 @@ class Player:
 		#more implementation
 
 def Deal():
-	
+	Deck = range(52);
+	Deck.shuffle();
+	p1,p2,p3,p4 = Deck[0:13], Deck[13:26], Deck[26:39], Deck[39:42];
 					 
+
 	
 print Deck;

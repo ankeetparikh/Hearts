@@ -8,6 +8,8 @@ import random;
 
 Deck = [];
 
+class Card:
+	#implement here
 class Player:
 	points = 0;
 	clubs = [];

@@ -20,7 +20,7 @@ class Player:
 		
 	def setHand(hand):
 		self.clubs = hand['clubs'];
-		self.hearts = hand['hearts'];
+		self.diamonds = hand['diamonds'];
 		self.spades = hand['spades'];
 		self.hearts = hand['hearts'];
 			
@@ -33,7 +33,9 @@ def Deal():
 	Deck = range(52);
 	Deck.shuffle();
 	p1,p2,p3,p4 = Deck[0:13], Deck[13:26], Deck[26:39], Deck[39:42];
-					 
+	hands = [p1,p2,p3,p4];				 
+	for i in len(hands):
+		a = hands[i].sort();
 
 	
 print Deck;

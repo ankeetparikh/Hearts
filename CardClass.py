@@ -1,5 +1,4 @@
 def suit(card):	
-		card += 1
 		check_suit = card/13
 		if check_suit == 0:
 			return "Clubs"
@@ -11,10 +10,9 @@ def suit(card):
 			return "Hearts"
 
 def value(card):
-		card += 1
 		check_value = card%13
 		if check_value <= 9:
-			return str(check_value + 1)
+			return str(check_value + 2)
 		elif check_value == 10:
 			return "Jack"
 		elif check_value == 11:

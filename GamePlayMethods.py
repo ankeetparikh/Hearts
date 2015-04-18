@@ -21,7 +21,7 @@ class Player:
 	def __init__(self):
 		self.points = 0;
 		
-	def setHand(hand):
+	def setHand(self,hand):
 		self.clubs = hand['clubs'];
 		self.diamonds = hand['diamonds'];
 		self.spades = hand['spades'];
@@ -63,13 +63,12 @@ def Deal(playerList):
 			if(suit == 3):
 				toAssign['hearts'].append(card);
 		print toAssign
-		#playerList[i].setHand(toAssign);
+		playerList[i].setHand(toAssign);
 a = Player();
 b = Player();
 c = Player();
 d = Player();
-Deal([a,b,c,d]);
-print a.clubs;			
+Deal([a,b,c,d]);		
 
 
 

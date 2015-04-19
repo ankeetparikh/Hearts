@@ -98,8 +98,7 @@ def displayPlayerHand(hand,selection):
 		#create a surface for the ith card in the player's hand
 		card = getCardFace(hand[i],card_color,basicfont,40,60)
 		#blit the card to the display surface with dynamic centering
-		frame.blit(card,((windowwidth-45*len(hand))/2+i*45, windowheight-65+offset))
-	return (hand,selection)
+		overlay.blit(card,((windowwidth-45*len(hand))/2+i*45, 100-65+offset))
 
 #display card played from given side
 def displayCardPlay(card_num,side):
@@ -109,16 +108,16 @@ def displayCardPlay(card_num,side):
 	if side == 0:
 		location = ((windowwidth-80)/2,(windowheight-430)/2+210)
 	if side == 1:
-		location = ((windowwidth-330)/2,(windowheight-100)/2)
+		location = ((windowwidth-330)/2,(windowheight-100)/2-40)
 	if side == 2:
 		location = ((windowwidth-80)/2,(windowheight-430)/2)
 	if side == 3:
-		location = ((windowwidth-330)/2+210,(windowheight-100)/2)
+		location = ((windowwidth-330)/2+210,(windowheight-100)/2-40)
 	frame.blit(card,location)
 
 #initialize some base graphics elements
 def initialize(gamewidth,gameheight,fps_limit):
-    global displaysurf,basicfont,largefont,frame
+    global displaysurf,basicfont,largefont,frame,overlay
     global windowwidth,windowheight,fps
     
     windowwidth = gamewidth
@@ -139,3 +138,8 @@ def initialize(gamewidth,gameheight,fps_limit):
     frame = pygame.Surface(displaysurf.get_size())
     frame = frame.convert()
     frame.fill(background_color)
+    
+    #initialize overlay surface for player's hand
+    overlay = pygame.Surface((windowwidth,100))
+    overlay = overlay.convert()
+    overlay.fill(background_color)

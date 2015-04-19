@@ -27,9 +27,9 @@ def name_of_card(card):
 
 def pointValue(card):
 	points = 0;
-	if(card >= 39)
+	if(card >= 39):
 		points = 1;
-	if(card == 36)
+	if(card == 36):
 		points = 13;
 	return points
 

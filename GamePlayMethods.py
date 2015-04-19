@@ -7,28 +7,28 @@
 '''
 import random;
 import CardClass;
-import PlayCardAuto;
+import Auto;
 
 class Game:
-	heartsBroken = false;
-	cardsPlayed = []
+	heartsBroken = False;
+	cardsPlayed = [[],[],[],[]];
 	def __init__(self):
-		self.heartsBroken = false;
+		self.heartsBroken = False;
 	
 
 
 class Player:
 	points = 0;
-	hasTwoOfClubs = false;
+	hasTwoOfClubs = False;
 	hand = [];
 	def __init__(self):
 		self.points = 0;
 		
 	def setHand(self,hand):
 		self.hand = hand;
-		self.hasTwoOfClubs = false;
+		self.hasTwoOfClubs = False;
 		if(self.hand[0] == 0):
-			self.hasTwoOfClubs = true;
+			self.hasTwoOfClubs = True;
 		
 	'''
 		getHand method:
@@ -46,8 +46,8 @@ class Player:
 		parameter:  -list of cards played so far, 
 						for the first player, the list will be empty
 					-the current card the player wants to play
-		return true if the card played is valid, 
-		false otherwise this is used for non-cpu players
+		return True if the card played is valid, 
+		False otherwise this is used for non-cpu players
 		
 	'''	
 	def playCardUser(self, sofar, card):
@@ -55,12 +55,12 @@ class Player:
 			#test if the player has the two of clubs:
 			if(self.count(0) == 1): 
 				if(card == 0):
-					return [true, ''];
+					return [True, ''];
 				else:
-					return [false, 'You must play the two of clubs on the first round.']
+					return [False, 'You must play the two of clubs on the first round.']
 			else:
 				self.hand.remove(card);
-				return [true, ''];
+				return [True, ''];
 		else:
 			leadingCard = sofar[0];
 			lb = (leadingCard/13)*13;
@@ -71,12 +71,12 @@ class Player:
 					valids.append(hands[i]);
 			if(len(valids) == 0): #if they have no cards of the leading suit
 				self.hand.remove(card);
-				return [true,''];
+				return [True,''];
 			else:
 				if(valids.count(card) == 1): #if they have a card of the leading suit
-					return [true, ''];
+					return [True, ''];
 				else:
-					return [false, 'You must play a card of suit:' + CardClass.suit(leadingCard)]
+					return [False, 'You must play a card of suit:' + CardClass.suit(leadingCard)]
 			
 				
 	'''
@@ -102,7 +102,7 @@ class Player:
 	def passCardsAuto():
 		return Auto.passCard(self)
 	
-	def addPassCards(self,passed);
+	def addPassCards(self,passed):
 		self.hand.append(passed);
 		self.hand.sort();
 		return 0;
@@ -135,7 +135,7 @@ for i in [a,b,c,d]:
 players = [a,b,c,d];
 sofar = [];
 for i in range(4):
-	sofar.append(PlayCardAuto.playCard());
+	sofar.append(Auto.playCard());
 	
 
 

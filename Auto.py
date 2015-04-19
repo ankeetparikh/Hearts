@@ -34,7 +34,7 @@ class Automate:
 						if(curr/13 != 3 and curr != 36):
 							options.append(curr);
 					if(len(options) > 0):
-						r = randInt(0, len(options)-1);
+						r = randint(0, len(options)-1);
 						choice = options[r];
 						Player.hand.remove(choice);
 						return choice; 
@@ -49,7 +49,7 @@ class Automate:
 						
 					
 		
-	def passCard(self, Player):
+	def passCard(self, Player): #Pass the three highest hearts...
 		a = Player.hand.pop()
 		b = Player.hand.pop()
 		c = Player.hand.pop()

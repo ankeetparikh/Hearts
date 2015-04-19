@@ -8,10 +8,15 @@
 import random;
 import CardClass;
 import PlayCardAuto;
-'''
-class Card:
-	#implement here
-'''
+
+class Game:
+	heartsBroken = false;
+	cardsPlayed = range()
+	def __init__(self):
+		self.heartsBroken = false;
+	
+
+
 class Player:
 	points = 0;
 	hasTwoOfClubs = false;

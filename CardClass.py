@@ -32,13 +32,14 @@ def pointValue(card):
 	if(card == 36):
 		points = 13;
 	return points
-
+	
 def winner(cardList):
-	card1 = cardList[0];
-	cards = cardList[1:4];
-	win = 0;
-	for i in range(len(cards)):
-		if suit(cards[i]) == suit(card1):
-			if cards[i] > card1:
-				win = i+1
-	return win 
+
+	max = cardList[0]
+	maxLoc = 0;
+	for i in range(len(cardList)):
+		if suit(cardList[i]) == suit(max):
+			if cardList[i] > max:
+				max = cardList[i];
+				maxLoc = i;
+	return maxLoc

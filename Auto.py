@@ -35,5 +35,3 @@ class Automate:
 		b = Player.hand.pop()
 		c = Player.hand.pop()
 		return [a,b,c]
-
-

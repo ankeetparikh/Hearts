@@ -1,4 +1,10 @@
-import numpy
-a = [0,2,4,6]
-print a[1:4]
-#sample code
+class Foo:
+	val =0;
+	def __init__(self, val):
+		self.val = val;
+		pass;
+	def square(self):
+		return self.val*self.val;
+
+a = Foo(67)
+print a.square()

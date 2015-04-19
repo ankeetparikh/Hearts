@@ -24,6 +24,14 @@ def value(card):
 
 def name_of_card(card):
 		return value(card) + " of " + suit(card)
+		
+def pointValue(card):
+	points = 0;
+	if(card >= 39):
+		points = 1;
+	if(card == 36):
+		points = 13;
+	return points
 
 def winner(cardList):
 	max = cardList[0]

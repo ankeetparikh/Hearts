@@ -26,19 +26,13 @@ def name_of_card(card):
 		return value(card) + " of " + suit(card)
 
 
-class Card:
-	def __init__(self,card1,card2,card3,card4):
-		self.card1 = card1
-		self.card2 = card2
-		self.card3 = card3
-		self.card4 = card4
-
-	def winner(self):
-		cards = [self.card2,self.card3,self.card4]
-		win = 0
-		for i in cards:
-			if suit(i) == suit(self.card1):
-				if value(i) > value(self.card1):
-					win = cards.index(i) + 1
-
-		return win 
+def winner(cardList):
+	card1 = cardList[0];
+	cards = cardList[1:4];
+	win = 0;
+	for i in range(len(cards)):
+		if suit(cards[i]) == suit(card1):
+			if cards[i] > card1:
+				win = i+1
+	return win 
+print winner([7,19,21,11])

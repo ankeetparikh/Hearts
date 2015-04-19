@@ -42,4 +42,3 @@ def winner(cardList):
 				max = cardList[i];
 				maxLoc = i;
 	return maxLoc
-print winner([1,3,7,9])

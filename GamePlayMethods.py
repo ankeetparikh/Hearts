@@ -9,13 +9,13 @@ import random;
 import CardClass;
 import Auto;
 
-class Game:
+heartsBroken = False;
+cardsPlayed = [[],[],[],[]];
+
+def reset():
 	heartsBroken = False;
 	cardsPlayed = [[],[],[],[]];
-	def __init__(self):
-		self.heartsBroken = False;
 	
-
 
 class Player:
 	points = 0;

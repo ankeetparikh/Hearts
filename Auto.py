@@ -18,17 +18,36 @@ class Automate:
 			options = []
 			for i in Player.hand:
 				if i/13 == lead_suit:
-					options.append(i)
+					options.append(i);
 			if(len(options) > 0):		
 				r = randint(0, len(options)-1)
 				play = options[r];
 				Player.hand.remove(play);
 				return play
-			else:
-				r = randint(0, len(Player.hand)-1);
-				play = Player.hand[r];
-				Player.hand.remove(play);
-				return play;
+			else: # no cards of leading suit
+				#if no clubs on first round, cannot play point card
+				if(lead_card == 0):
+					options = [];
+					for i in range(len(Player.hand)):
+						curr = Player.hand[i];
+						#choose non-point cards
+						if(curr/13 != 3 and curr != 36):
+							options.append(curr);
+					if(len(options) > 0)
+						r = randInt(0, len(options)-1);
+						choice = options[r];
+						Player.hand.remove(choice);
+						return choice; 
+					else: #Unlikely, but a player might have to play a point card on the first round
+						choice = Player.hand[r];
+						Player.hand.remove(choice);
+						return choice;
+				#otherwise
+				choice = Player.hand[r];
+				Player.hand.remove(choice);
+				return choice;
+						
+					
 		
 	def passCard(self, Player):
 		a = Player.hand.pop()

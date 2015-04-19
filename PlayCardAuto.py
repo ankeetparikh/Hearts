@@ -1,6 +1,6 @@
 from random import randint
 
-class PlayCardAuto:
+class Auto:
 	def __init__(self):
 		pass
 

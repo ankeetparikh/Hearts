@@ -31,8 +31,8 @@ class Player:
 		return: a list of integers, between 0 and 51 inclusive,
 			of the cards in the player's hand 
 	'''
-	def getHand():
-		return hand;
+	def getHand(self):
+		return self.hand;
 
 	
 	
@@ -51,9 +51,11 @@ class Player:
 			if(self.count(0) == 1): 
 				if(card == 0):
 					return [true, ''];
+				else:
+					return [false, 'You must play the two of clubs on the first round.']
 			else:
 				self.hand.remove(card);
-				return true;
+				return [true, ''];
 		else:
 			leadingCard = sofar[0];
 			lb = (leadingCard/13)*13;
@@ -62,11 +64,14 @@ class Player:
 			for i in range(len(hands)):
 				if(hands[i] >= lb and hands[i] <= ub):
 					valids.append(hands[i]);
-			if(len(valids) == 0):
+			if(len(valids) == 0): #if they have no cards of the leading suit
 				self.hand.remove(card);
-				return true;
+				return [true,''];
 			else:
-				return [false, 'You must play a '];
+				if(valids.count(card) == 1): #if they have a card of the leading suit
+					return [true, ''];
+				else:
+					return [false, 'You must play a card of suit:' + CardClass.suit(leadingCard)]
 			
 				
 	'''

@@ -25,14 +25,18 @@ def value(card):
 def name_of_card(card):
 		return value(card) + " of " + suit(card)
 
-def pointValue(card):
-	points = 0;
-	if(card >= 39)
-		points = 1;
-	if(card == 36)
-		points = 13;
-	return points
+# Nitika's Winner method
+def winner(cardList):
+	cards = [cardList[1],cardList[2],cardList[3]]
+	winner = cardList[0]
+	win = 0
+	for i in cards:
+		if suit(i) == suit(cardList[0]):
+			if i%13 > winner%13:
+				win = cards.index(i) + 1
+	return win 
 
+# Steven's Winner Method
 def winner(cardList):
 	card1 = cardList[0];
 	cards = cardList[1:4];
@@ -42,4 +46,3 @@ def winner(cardList):
 			if cards[i] > card1:
 				win = i+1
 	return win 
-print winner([7,19,21,11])

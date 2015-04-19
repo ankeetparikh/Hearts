@@ -83,13 +83,17 @@ class Player:
 				
 	'''
 		passCards method:
-		paramters: cards that the user wants to pass
+		paramters: cards that the user wants to pass, player that this person is passing to
 		removes those cards from the hand
 		
 	'''
 	def passCards(self, cardsToPass):
 		for i in cardsToPass:
 			self.hand.remove(i);
+	
+	def addPassCards(self,passed):
+		self.hand.append(passed)
+		self.hand.sort()
 	'''
 		playCardAuto method
 		parameter: list of cards played so far
@@ -107,12 +111,11 @@ class Player:
 		auto = Automate();
 		return auto.passCard(self)
 	
-	def addPassCards(self,passed):
-		self.hand.append(passed);
-		self.hand.sort();
-		return 0;
+	
+		
+		
 	def addPoints(self, total):
-		self.points+=total;		
+		self.points+=total		
 		
 	'''
 	parameter: the list of player objects (length must be 4)

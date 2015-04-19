@@ -50,7 +50,8 @@ class Automate:
 					
 		
 	def passCard(self, Player): #Pass the three highest hearts...
-		a = Player.hand.pop()
-		b = Player.hand.pop()
-		c = Player.hand.pop()
+		container = sample(range(13),3)
+		a = Player.hand.pop(container[0])
+		b = Player.hand.pop(container[1])
+		c = Player.hand.pop(container[2])
 		return [a,b,c]

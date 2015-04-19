@@ -14,10 +14,9 @@ player4 = GamePlayMethods.Player()
 #put the players into one list
 Players = [player1, player2, player3, player4]
 
-roundnumber = 0
+roundnumber = 1
 
-while player1.points < 100 and player2.points < 100 and player3.points < 100 and player4.points < 100:
-	roundnumber += 1	
+while player1.points < 100 and player2.points < 100 and player3.points < 100 and player4.points < 100:	
 	score = [0,0,0,0]
 
 	#Deal out the cards to all the players
@@ -29,7 +28,20 @@ while player1.points < 100 and player2.points < 100 and player3.points < 100 and
 	player3.setHand([26,27,28,29,30,31,32,33,34,35,36,37,39])
 	player4.setHand([38,40,41,42,43,44,45,46,47,48,49,50,51])
 	'''
+	# Pass cards
+	pass_container = [[],[],[],[]]
+	if roundnumber % 4 != 0:
+		for b in range(4):
+			pass_container[b] = Players[b].passCardsAuto()
 	
+	# Add passed cards
+	for c in range(4):
+		if (roundnumber % 4 == 1):
+			Players[c].addPassCards(pass_container[(c+1) % 4])
+		elif (roundnumber % 4 == 2):
+			Players[c].addPassCards(pass_container[(c+3) % 4])
+		elif (roundnumber % 4 == 3):
+			Players[c].addPassCards(pass_container[(c+2) % 4])
 	
 	turn = 0
 	sofar = []
@@ -78,6 +90,7 @@ while player1.points < 100 and player2.points < 100 and player3.points < 100 and
 	for p in range(4):
 		print "player %d: %d" % (p+1, Players[p].points)
 
+	roundnumber += 1
 
 #Print out the winner of the game!
 win_index = 1

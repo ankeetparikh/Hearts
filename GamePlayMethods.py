@@ -37,14 +37,19 @@ class Player:
 		parameter:  -list of cards played so far, 
 						for the first player, the list will be empty
 					-the current card the player wants to play
-		return true if the card played is valid, false otherwise
-		this is used for non-cpu players
+		return true if the card played is valid, 
+		false otherwise this is used for non-cpu players
 		
 	'''	
 	def playCardUser(self, sofar, card):
 		if(len(sofar) == 0):
-			self.hand.remove(card);
-			return true;
+			#test if the player has the two of clubs:
+			if(self.count(0) == 1): 
+				if(card == 0):
+					return [true, ''];
+			else:
+				self.hand.remove(card);
+				return true;
 		else:
 			leadingCard = sofar[0];
 			lb = (leadingCard/13)*13;
@@ -57,9 +62,18 @@ class Player:
 				self.hand.remove(card);
 				return true;
 			else:
-				return false;
+				return [false, 'You must play a '];
 			
 				
+	'''
+		passCards method:
+		paramters: cards that the user wants to pass
+		removes those cards from the hand
+		
+	'''
+	def passCards(self, cardsToPass):
+		for i in cardsToPass:
+			self.hand.remove(i);
 	'''
 		playCardAuto method
 		parameter: list of cards played so far
@@ -70,11 +84,14 @@ class Player:
 	'''
 	def playCardAuto(self, sofar):
 		return PlayCardAuto.playCard(self, sofar);
-	
-	def passCards():
-		#more implementation
-		return 0;
 		
+	def passCardsAuto():
+		return PlayCardAuto.passCard(self)
+	
+	def addPassCards(self,passed);
+		self.hand.append(passed);
+		self.hand.sort();
+		return 0;
 		
 	'''
 	parameter: the list of player objects (length must be 4)

@@ -52,12 +52,12 @@ class Player:
 			ub = lb + 12;
 			valids = [];
 			for i in range(len(hands)):
-				if(hands[i]> = lb && hands[i] <= ub):
+				if(hands[i] >= lb and hands[i] <= ub):
 					valids.append(hands[i]);
 			if(len(valids) == 0):
 				self.hand.remove(card);
 				return true;
-			else
+			else:
 				return false;
 			
 				

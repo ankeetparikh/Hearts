@@ -13,15 +13,19 @@ class Game:
 	heartsBroken = False;
 	cardsPlayed = [[],[],[],[]]
 	def __init__(self):
-		self.heartsBroken = False
+		self.heartsBroken = False;
 	
 
 
 class Player:
-	points = 0
-	hasTwoOfClubs = False
+	points = 0;
+	hasTwoOfClubs = False;
+	hand = [];
+	def __init__(self):
+		self.points = 0;
+		
 	def setHand(self,hand):
-		self.hand = hand
+		self.hand = hand;
 		self.hasTwoOfClubs = False;
 		if(self.hand[0] == 0):
 			self.hasTwoOfClubs = True;
@@ -93,12 +97,10 @@ class Player:
 		
 	'''
 	def playCardAuto(self, sofar):
-
-		auto = Automate();
-		return auto.playCard(self, sofar);
+		return Auto.playCard(self, sofar);
 		
 	def passCardsAuto():
-		return Automate.passCard(self)
+		return Auto.passCard(self)
 	
 	def addPassCards(self,passed):
 		self.hand.append(passed);
@@ -121,4 +123,38 @@ def Deal(playerList):
 	for i in range(4):
 		hands[i].sort();
 		playerList[i].setHand(hands[i]);
+	
+a = Player();
+b = Player();
+c = Player();
+d = Player();
+Deal([a,b,c,d]);
+for i in [a,b,c,d]:
+	print i.hand;		
+
+players = [a,b,c,d];
+sofar = [];
+auto = Automate();
+for i in range(4):
+	cardplay = auto.playCard(players[i],sofar);
+	sofar.append(cardplay)
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -25,24 +25,13 @@ def value(card):
 def name_of_card(card):
 		return value(card) + " of " + suit(card)
 
-# Nitika's Winner method
 def winner(cardList):
-	cards = [cardList[1],cardList[2],cardList[3]]
-	winner = cardList[0]
-	win = 0
-	for i in cards:
-		if suit(i) == suit(cardList[0]):
-			if i%13 > winner%13:
-				win = cards.index(i) + 1
-	return win 
-
-# Steven's Winner Method
-def winner(cardList):
-	card1 = cardList[0];
-	cards = cardList[1:4];
-	win = 0;
-	for i in range(len(cards)):
-		if suit(cards[i]) == suit(card1):
-			if cards[i] > card1:
-				win = i+1
-	return win 
+	max = cardList[0]
+	maxLoc = 0;
+	for i in range(len(cardList)):
+		if suit(cardList[i]) == suit(max):
+			if cardList[i] > max:
+				max = cardList[i];
+				maxLoc = i;
+	return maxLoc
+print winner([1,3,7,9])

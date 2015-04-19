@@ -7,18 +7,17 @@
 '''
 import random;
 import CardClass;
-import Auto;
+from Auto import Automate;
 
-heartsBroken = False;
-cardsPlayed = [[],[],[],[]];
-
-def reset():
+class Game:
 	heartsBroken = False;
-	cardsPlayed = [[],[],[],[]];
+	cardsPlayed = [[],[],[],[]]
+	def __init__(self):
+		self.heartsBroken = False;
 	
 
-class Player:
 
+class Player:
 	points = 0;
 	hasTwoOfClubs = False;
 	hand = [];
@@ -27,7 +26,6 @@ class Player:
 		
 	def setHand(self,hand):
 		self.hand = hand;
-
 		self.hasTwoOfClubs = False;
 		if(self.hand[0] == 0):
 			self.hasTwoOfClubs = True;
@@ -48,8 +46,8 @@ class Player:
 		parameter:  -list of cards played so far, 
 						for the first player, the list will be empty
 					-the current card the player wants to play
-		return True if the card played is valid, 
-		False otherwise this is used for non-cpu players
+		return true if the card played is valid, 
+		false otherwise this is used for non-cpu players
 		
 	'''	
 	def playCardUser(self, sofar, card):
@@ -99,12 +97,10 @@ class Player:
 		
 	'''
 	def playCardAuto(self, sofar):
-
-		auto = Automate();
-		return auto.playCard(self, sofar);
+		return Auto.playCard(self, sofar);
 		
 	def passCardsAuto():
-		return Automate.passCard(self)
+		return Auto.passCard(self)
 	
 	def addPassCards(self,passed):
 		self.hand.append(passed);
@@ -127,5 +123,38 @@ def Deal(playerList):
 	for i in range(4):
 		hands[i].sort();
 		playerList[i].setHand(hands[i]);
+	
+a = Player();
+b = Player();
+c = Player();
+d = Player();
+Deal([a,b,c,d]);
+for i in [a,b,c,d]:
+	print i.hand;		
+
+players = [a,b,c,d];
+sofar = [];
+auto = Automate();
+for i in range(4):
+	cardplay = auto.playCard(players[i],sofar);
+	sofar.append(cardplay)
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -11,7 +11,7 @@ import PlayCardAuto;
 
 class Game:
 	heartsBroken = false;
-	cardsPlayed = range()
+	cardsPlayed = []
 	def __init__(self):
 		self.heartsBroken = false;
 	
@@ -27,7 +27,7 @@ class Player:
 	def setHand(self,hand):
 		self.hand = hand;
 		self.hasTwoOfClubs = false;
-		if(self.hand[0] == 0)
+		if(self.hand[0] == 0):
 			self.hasTwoOfClubs = true;
 		
 	'''

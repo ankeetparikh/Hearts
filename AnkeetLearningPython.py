@@ -1,4 +1,2 @@
-import numpy
-a = [0,2,4,6]
-print a[1:4]
-#sample code
+a = [[0] for i in range(4)]
+print a

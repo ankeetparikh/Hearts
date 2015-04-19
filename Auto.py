@@ -33,7 +33,7 @@ class Automate:
 						#choose non-point cards
 						if(curr/13 != 3 and curr != 36):
 							options.append(curr);
-					if(len(options) > 0)
+					if(len(options) > 0):
 						r = randInt(0, len(options)-1);
 						choice = options[r];
 						Player.hand.remove(choice);

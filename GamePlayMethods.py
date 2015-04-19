@@ -7,7 +7,7 @@
 '''
 import random;
 import CardClass;
-import Auto;
+from Auto import Automate;
 
 heartsBroken = False;
 cardsPlayed = [[],[],[],[]];
@@ -104,7 +104,8 @@ class Player:
 		return auto.playCard(self, sofar);
 		
 	def passCardsAuto():
-		return Automate.passCard(self)
+		auto = Automate();
+		return auto.passCard(self)
 	
 	def addPassCards(self,passed):
 		self.hand.append(passed);

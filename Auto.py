@@ -11,7 +11,23 @@ class Automate:
 			Player.hasTwoOfClubs = False;
 			return 0;
 		if len(sofar) == 0:
-			return Player.hand.pop(r)
+			if(heartsBroken):
+				return Player.hand.pop(r)
+			else:
+				options = [];
+				for i in Player.hand:
+					if(i < 39)
+						options.add(i);
+				if(len(options) > 0):
+					r = randint(0, len(options)-1)
+					choice = options[r];
+					options.remove[r];
+					return choice;
+				else:
+					r = randint(0, len(Player.hand)):
+					choice = options[r];
+					options.remove(choice);
+					return choice
 		else:
 			lead_card = sofar[0]
 			lead_suit = lead_card/13

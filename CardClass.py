@@ -23,7 +23,7 @@ def value(card):
 			return "Ace"
 
 def name_of_card(card):
-		return value(card) + " if " + suit(card)
+		return value(card) + " of " + suit(card)
 
 
 class Card:

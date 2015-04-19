@@ -2,7 +2,6 @@
 	A few notations to consider in this program:
 	The four suits (exactly as written): Clubs, Diamonds, Spades, Hearts
 	The players are stored as objects. The player object contains the hand and the number of points.
-	Order of suits:
 	
 	 
 '''
@@ -91,29 +90,7 @@ def Deal(playerList):
 	for i in range(4):
 		hands[i].sort();
 		playerList[i].setHand(hands[i]);
-	'''				 
-	for i in range(4):
-		currhand = hands[i];
-		a = currhand.sort();
-		toAssign = {};
-		toAssign['Spades']  =[];
-		toAssign['Hearts']  =[];
-		toAssign['Clubs']   =[];
-		toAssign['Diamonds']=[];
-		for j in currhand:
-			suit = j/13;
-			card = j%13;
-			if(suit == 0):
-				toAssign['Clubs'].append(card);
-			if(suit == 1):
-				toAssign['Diamonds'].append(card);
-			if(suit == 2):
-				toAssign['Spades'].append(card);
-			if(suit == 3):
-				toAssign['Hearts'].append(card);
-		print toAssign
-		playerList[i].setHand(toAssign);
-	'''
+	
 a = Player();
 b = Player();
 c = Player();
@@ -121,6 +98,26 @@ d = Player();
 Deal([a,b,c,d]);
 for i in [a,b,c,d]:
 	print i.hand;		
+
+players = [a,b,c,d];
+sofar = [];
+for i in range(4):
+	sofar.append(PlayCardAuto.playCard());
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

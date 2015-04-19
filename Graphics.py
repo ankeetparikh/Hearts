@@ -16,6 +16,7 @@ LIGHT_GREY =    (200,200,200)
 background_color = DARK_GREEN
 text_color = WHITE
 font_size = 10
+large_font_size = 20
 
 # list of keybindings
 controls = [
@@ -44,11 +45,11 @@ card_dict = {
 
 
 # returns a surface with the graphic of a given card
-def getCardFace(num,card_background_color,width,height):
+def getCardFace(card_num,card_background_color,number_font,width,height):
 	global card_dict
 
-	suit = num/13
-	number = card_dict[num%13]
+	suit = card_num/13
+	number = card_dict[card_num%13]
 	
 	#instantiate a surface with given width and height
 	card = pygame.Surface((width,height))
@@ -72,18 +73,18 @@ def getCardFace(num,card_background_color,width,height):
 	#this conversion makes sure the .png's transparency is preserved
 	suit_img = suit_img.convert_alpha()
 	#create a surface with the card number
-	numberlabel = basicfont.render(number, True, card_color, card_background_color)
+	numberlabel = number_font.render(number, True, card_color, card_background_color)
 	
 	#blit the number to the top-left and bottom-right corners
 	card.blit(numberlabel, (2,2))
-	card.blit(numberlabel, (width-4-5*len(number),height-12))
+	card.blit(pygame.transform.rotate(numberlabel,180), 
+		(width-2-number_font.size(number)[0],
+		height-2-number_font.size(number)[1]))
 	#blit the suit asset to the center of the card surface
 	card.blit(suit_img,((width-20)/2,(height-20)/2))
 	
 	return card
 	
-
-
 #displays the hand of the player across the bottom of the screen
 def displayPlayerHand(hand,selection):
 	for i in range(0,len(hand)):
@@ -95,16 +96,29 @@ def displayPlayerHand(hand,selection):
 			card_color = LIGHT_GREY
 			offset = 0
 		#create a surface for the ith card in the player's hand
-		card = getCardFace(hand[i],card_color,40,60)
+		card = getCardFace(hand[i],card_color,basicfont,40,60)
 		#blit the card to the display surface with dynamic centering
 		frame.blit(card,((windowwidth-45*len(hand))/2+i*45, windowheight-65+offset))
 	return (hand,selection)
 
-
+#display card played from given side
+def displayCardPlay(card_num,side):
+	card = getCardFace(card_num,WHITE,largefont,80,120);
+	#rotate the card as needed, and blit it at the correct location
+	card = pygame.transform.rotate(card,((4-side)%4)*90)
+	if side == 0:
+		location = ((windowwidth-80)/2,(windowheight-430)/2+210)
+	if side == 1:
+		location = ((windowwidth-330)/2,(windowheight-100)/2)
+	if side == 2:
+		location = ((windowwidth-80)/2,(windowheight-430)/2)
+	if side == 3:
+		location = ((windowwidth-330)/2+210,(windowheight-100)/2)
+	frame.blit(card,location)
 
 #initialize some base graphics elements
 def initialize(gamewidth,gameheight,fps_limit):
-    global displaysurf,basicfont,frame
+    global displaysurf,basicfont,largefont,frame
     global windowwidth,windowheight,fps
     
     windowwidth = gamewidth
@@ -119,7 +133,9 @@ def initialize(gamewidth,gameheight,fps_limit):
     pygame.display.set_caption('PyHearts')
     #initialize the main font for the game
     basicfont = pygame.font.Font('freesansbold.ttf', font_size)
+    largefont = pygame.font.Font('freesansbold.ttf', large_font_size)
 
     #initialize the main canvas for displaying to the window
     frame = pygame.Surface(displaysurf.get_size())
     frame = frame.convert()
+    frame.fill(background_color)

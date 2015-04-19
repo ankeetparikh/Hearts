@@ -43,8 +43,9 @@ def handleInput(hand,selection,state):
 		state = False
 	
 	if keypress == K_RETURN and len(hand)>0:
-		#remove the selected card from the hand
-		hand.pop(selection)
+		#display player's played card
+		graphics.displayCardPlay(hand.pop(selection),0)
+		
 		#if we select the last card, we must decrement selection,
 		#since the hand is now one card fewer
 		if selection == len(hand):
@@ -74,8 +75,6 @@ selection = 0
 state = True
 #game ends when state is False
 while state:
-	#refresh the frame
-	graphics.frame.fill(background_color)
 	
 	#display the player's hand with the current selection highlighted
 	(hand,selection) = displayPlayerHand(hand,selection)
@@ -84,8 +83,11 @@ while state:
 	graphics.displaysurf.blit(graphics.frame, (0,0))
 	pygame.display.update()
 	
+	#refresh the frame
+	graphics.frame.fill(background_color)
+	
 	#handle any user input
 	(hand,selection,state) = handleInput(hand,selection,state)
-		
+	
 	#wait for clock tick before next loop iteration
 	fpsclock.tick(fps_limit)

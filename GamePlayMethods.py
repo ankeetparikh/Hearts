@@ -122,7 +122,8 @@ class Player:
 
 def Deal(playerList):
 	Deck = range(52);
-	random.shuffle(Deck);
+	for i in range(20):
+		random.shuffle(Deck);
 	p1,p2,p3,p4 = Deck[0:13], Deck[13:26], Deck[26:39], Deck[39:52];
 	hands = [p1,p2,p3,p4];
 	for i in range(4):

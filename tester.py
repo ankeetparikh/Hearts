@@ -24,12 +24,13 @@ while player1.points < 100 and player2.points < 100 and player3.points < 100 and
 	GamePlayMethods.Deal(Players)
 
 	'''
-	player1.setHand(range(13))
-	player2.setHand(range(13,26))
-	player3.setHand(range(26,39))
-	player4.setHand(range(39,52))
+	player1.setHand([0,1,2,3,4,5,6,7,8,9,10,13,14])
+	player2.setHand([11,12,15,16,17,18,19,20,21,22,23,24,25])
+	player3.setHand([26,27,28,29,30,31,32,33,34,35,36,37,39])
+	player4.setHand([38,40,41,42,43,44,45,46,47,48,49,50,51])
 	'''
-
+	
+	
 	turn = 0
 	sofar = []
 	#Test each trick
@@ -47,7 +48,7 @@ while player1.points < 100 and player2.points < 100 and player3.points < 100 and
 		point_total = 0
 		#each person plays a card (and loops through turn)
 		for m in range(4):
-			#print str(turn) +" " + str(Players[turn].hand)
+			# print str(turn) +" " + str(Players[turn].hand)
 			card = Players[turn].playCardAuto(sofar)
 			sofar.append(card)
 			turn = (turn+1) % 4

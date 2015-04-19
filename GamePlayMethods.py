@@ -55,7 +55,10 @@ class Player:
 				if(hands[i]> = lb && hands[i] <= ub):
 					valids.append(hands[i]);
 			if(len(valids) == 0):
-				
+				self.hand.remove(card);
+				return true;
+			else
+				return false;
 			
 				
 	'''

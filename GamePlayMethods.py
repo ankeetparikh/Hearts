@@ -14,12 +14,16 @@ class Card:
 '''
 class Player:
 	points = 0;
+	hasTwoOfClubs = false;
 	hand = [];
 	def __init__(self):
 		self.points = 0;
 		
 	def setHand(self,hand):
 		self.hand = hand;
+		self.hasTwoOfClubs = false;
+		if(self.hand[0] == 0)
+			self.hasTwoOfClubs = true;
 		
 	'''
 		getHand method:
@@ -83,15 +87,17 @@ class Player:
 		
 	'''
 	def playCardAuto(self, sofar):
-		return PlayCardAuto.playCard(self, sofar);
+		return Auto.playCard(self, sofar);
 		
 	def passCardsAuto():
-		return PlayCardAuto.passCard(self)
+		return Auto.passCard(self)
 	
 	def addPassCards(self,passed);
 		self.hand.append(passed);
 		self.hand.sort();
 		return 0;
+	def addPoints(self, total):
+		self.points+=total;		
 		
 	'''
 	parameter: the list of player objects (length must be 4)

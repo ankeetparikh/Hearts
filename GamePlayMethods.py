@@ -29,7 +29,6 @@ class Player:
 			of the cards in the player's hand 
 	'''
 	def getHand():
-		#implement here
 		return hand;
 
 	
@@ -43,10 +42,20 @@ class Player:
 		this is used for non-cpu players
 		
 	'''	
-	def playCard(self, sofar, card):
-		
-		
-		
+	def playCardUser(self, sofar, card):
+		if(len(sofar) == 0):
+			self.hand.remove(card);
+			return true;
+		else:
+			leadingCard = sofar[0];
+			lb = (leadingCard/13)*13;
+			ub = lb + 12;
+			valids = [];
+			for i in range(len(hands)):
+				if(hands[i]> = lb && hands[i] <= ub):
+					valids.append(hands[i]);
+			if(len(valids) == 0):
+				
 			
 				
 	'''
@@ -58,7 +67,7 @@ class Player:
 		
 	'''
 	def playCardAuto(self, sofar):
-		return PlayCardAuto.play_card(self, sofar);
+		return PlayCardAuto.playCard(self, sofar);
 	
 	def passCards():
 		#more implementation
